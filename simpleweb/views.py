@@ -3,6 +3,7 @@ from django.http.response import HttpResponse
 from django.http import HttpResponseNotAllowed
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
+import random
 
 
 @csrf_exempt
@@ -18,7 +19,8 @@ def demo(request: HttpRequest) -> HttpResponse:
     if request.method != "GET":
         return HttpResponseNotAllowed(permitted_methods="GET")
 
-    return HttpResponse("<h1>Cached page</h1>")
+    random_num = random.randint(1, 1000)
+    return HttpResponse(f"<h1>Cached page <span>{random_num}</span></h1>")
 
 
 @csrf_exempt

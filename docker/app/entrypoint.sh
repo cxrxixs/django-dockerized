@@ -7,8 +7,8 @@ function postgres_ready(){
 import sys
 import psycopg2
 try:
-    print("Trying to connect to database '$DB_NAME' on host '$DB_HOST'..")
-    conn = psycopg2.connect(dbname="$DB_NAME", user="$DB_USER", password="$DB_PASSWORD", host="$DB_HOST")
+    print(f"Trying to connect to database '$DB_NAME' on host '$DB_HOST':'$DB_PORT'")
+    conn = psycopg2.connect(dbname="$DB_NAME", user="$DB_USER", password="$DB_PASSWORD", host="$DB_HOST", port="$DB_PORT")
 except psycopg2.OperationalError as e:
     print(e)
     sys.exit(-1)
