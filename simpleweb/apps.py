@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class SimplewebConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'simpleweb'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "simpleweb"
