@@ -1,0 +1,17 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version
+    rev: v0.4.3
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        types_or: [python]
+
+      - id: ruff-format
+
+
+  - repo: https://github.com/Riverside-Healthcare/djLint
+    rev: v1.33.0
+    hooks:
+      - id: djlint-reformat-django
+      - id: djlint-django
