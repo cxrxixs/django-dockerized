@@ -46,7 +46,7 @@ else:
         "POSTGRES_PASSWORD"
     )
     DB_HOST = os.environ.get("DB_HOST") or "localhost"
-    DB_PORT = os.environ.get("DB_PORT") or os.environ.get("POSTGRES_PORT")
+    DB_PORT = os.environ.get("DB_PORT") or "5432"
     REDIS_HOST = os.environ.get("REDIS_HOST")
     REDIS_PORT = os.environ.get("REDIS_PORT")
 
