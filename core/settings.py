@@ -40,6 +40,8 @@ if os.path.isfile(dotenv_file):
     REDIS_HOST = env("REDIS_HOST")
     REDIS_PORT = env("REDIS_PORT")
 else:
+    DEBUG = os.environ.get("DEBUG")
+    SECRET_KEY = os.environ.get("SECRET_KEY")
     DB_NAME = os.environ.get("DB_NAME") or os.environ.get("POSTGRES_DB")
     DB_USER = os.environ.get("DB_USER") or os.environ.get("POSTGRES_USER")
     # DB_PASSWORD = os.environ.get("DB_PASSWORD") or os.environ.get(
