@@ -41,7 +41,7 @@ if os.path.isfile(dotenv_file):
     REDIS_PORT = env("REDIS_PORT")
 else:
     DB_NAME = os.environ.get("DB_NAME") or os.environ.get("POSTGRES_DB")
-    DB_USER = os.environ.get("DB_USER")
+    DB_USER = os.environ.get("DB_USER") or os.environ.get("POSTGRES_USER")
     DB_PASSWORD = os.environ.get("DB_PASSWORD") or os.environ.get(
         "POSTGRES_PASSWORD"
     )
