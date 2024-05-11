@@ -7,13 +7,16 @@ verify_ssl = true
 ruff = "==0.4.3"
 ruff-lsp = "==0.0.53"
 pre-commit = "==3.7.0"
+djlint = "==1.34.1"
+pytest = "==8.2.0"
+pytest-dotenv = "*"
+pytest-django = "*"
 
 [packages]
 pip = "24.0"
 
 [requires]
 python_version = "3.11"
-
 
 [scripts]
 test = "pytest"
