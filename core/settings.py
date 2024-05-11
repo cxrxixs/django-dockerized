@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import dotenv
+import environ
 
 from pathlib import Path
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,13 +23,31 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-()1g-vdgnkjvdhh-621qk*x%^gb&gyh+=s7^f()eghgm7@qo^n"
-)
+dotenv_file = os.path.join(BASE_DIR, "docker/.env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+    env = environ.Env(
+        DEBUG=(bool, True),
+    )
+    environ.Env.read_env()
+    DEBUG = env("DEBUG")
+    SECRET_KEY = env("SECRET_KEY")
+    DB_NAME = env("DB_NAME")
+    DB_HOST = env("DB_HOST")
+    DB_PORT = env("DB_PORT")
+    DB_USER = env("DB_USER")
+    DB_PASSWORD = env("DB_PASSWORD")
+    REDIS_HOST = env("REDIS_HOST")
+    REDIS_PORT = env("REDIS_PORT")
+else:
+    DB_NAME = os.environ.get("DB_NAME")
+    DB_USER = os.environ.get("DB_USER")
+    DB_PASSWORD = os.environ.get("DB_PASSWORD")
+    DB_HOST = os.environ.get("DB_HOST")
+    DB_PORT = os.environ.get("DB_PORT")
+    REDIS_HOST = os.environ.get("REDIS_HOST")
+    REDIS_PORT = os.environ.get("REDIS_PORT")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", False)
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
@@ -89,11 +108,11 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DB_NAME"),
-        "USER": os.environ.get("DB_USER"),
-        "PASSWORD": os.environ.get("DB_PASSWORD"),
-        "HOST": os.environ.get("DB_HOST"),
-        "PORT": os.environ.get("DB_PORT"),
+        "NAME": DB_NAME,
+        "USER": DB_USER,
+        "PASSWORD": DB_PASSWORD,
+        "HOST": DB_HOST,
+        "PORT": DB_PORT,
     }
 }
 
@@ -120,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": f"redis://{os.environ.get('REDIS_HOST')}:{os.environ.get('REDIS_PORT')}/1",
+        "LOCATION": f"redis://{REDIS_HOST}:{REDIS_PORT}/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },

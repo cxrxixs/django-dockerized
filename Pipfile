@@ -11,6 +11,8 @@ djlint = "==1.34.1"
 pytest = "==8.2.0"
 pytest-dotenv = "*"
 pytest-django = "*"
+python-dotenv = "*"
+django-environ = "*"
 
 [packages]
 pip = "24.0"
