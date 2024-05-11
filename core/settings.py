@@ -42,9 +42,9 @@ if os.path.isfile(dotenv_file):
 else:
     DB_NAME = os.environ.get("DB_NAME") or os.environ.get("POSTGRES_DB")
     DB_USER = os.environ.get("DB_USER") or os.environ.get("POSTGRES_USER")
-    DB_PASSWORD = os.environ.get("DB_PASSWORD") or os.environ.get(
-        "POSTGRES_PASSWORD"
-    )
+    # DB_PASSWORD = os.environ.get("DB_PASSWORD") or os.environ.get(
+    #     "POSTGRES_PASSWORD")
+    DB_PASSWORD = "postgres"
     DB_HOST = os.environ.get("DB_HOST") or "localhost"
     DB_PORT = os.environ.get("DB_PORT") or "5432"
     REDIS_HOST = os.environ.get("REDIS_HOST")
