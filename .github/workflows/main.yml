@@ -2,8 +2,8 @@ name: test
 
 on: push
 
-env:
-  DJANGO_ENVIRONMENT: test
+# env:
+#   DJANGO_ENVIRONMENT: test
 
 jobs:
   test:
@@ -58,6 +58,9 @@ jobs:
       - name: Apply DB migrations
         run: |
           pipenv run python manage.py migrate
+
+        env:
+          DJANGO_ENVIRONMENT: test
 
       - name: Run tests
         run: |
