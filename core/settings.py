@@ -27,11 +27,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DJANGO_ENVIRONMENT = os.environ.get("DJANGO_ENVIRONMENT", "dev")
 
-# debug
-print("xxxxx DJANGO ENV xxxxx")
-print(DJANGO_ENVIRONMENT)
-print("xxxxx END DJANGO ENV xxxxx")
-
 if DJANGO_ENVIRONMENT == "dev":
     dotenv_file = os.path.join(BASE_DIR, "docker/.env.dev")
 elif DJANGO_ENVIRONMENT == "test":
@@ -40,11 +35,6 @@ elif DJANGO_ENVIRONMENT == "prod":
     dotenv_file = os.path.join(BASE_DIR, "docker/.env")
 else:
     dotenv_file = os.path.join(BASE_DIR, "docker/.env.dev")
-
-# debug
-print("xxxxxxxxxxxxx DOTENV FILE xxxxxxxxxxxxxxxxxxxxxxxx")
-print(dotenv_file)
-print("xxxxxxxxxxxxx END DOTENV FILE xxxxxxxxxxxxxxxxxxxxxxxx")
 
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
@@ -140,18 +130,6 @@ DATABASES = {
         "PORT": DB_PORT,
     }
 }
-
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "db_test",
-#         "USER": "postgres",
-#         "PASSWORD": "postgres",
-#         "HOST": "localhost",
-#         "PORT": "5432",
-#     }
-# }
 
 
 # Password validation

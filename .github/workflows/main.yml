@@ -2,9 +2,6 @@ name: test
 
 on: push
 
-# env:
-#   DJANGO_ENVIRONMENT: test
-
 jobs:
   test:
     runs-on: ubuntu-latest
