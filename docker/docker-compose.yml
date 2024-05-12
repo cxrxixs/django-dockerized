@@ -36,6 +36,7 @@ services:
       - cache
     environment:
       - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - DJANGO_ENVIRONMENT=${DJANGO_ENVIRONMENT}
       - DEBUG=${DEBUG}
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
